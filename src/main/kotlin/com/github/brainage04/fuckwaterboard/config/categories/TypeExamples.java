@@ -1,7 +1,7 @@
-package com.example.config.categories;
+package com.github.brainage04.fuckwaterboard.config.categories;
 
-import com.example.utils.ChatUtils;
-import com.example.utils.SoundUtils;
+import com.github.brainage04.fuckwaterboard.utils.ChatUtils;
+import com.github.brainage04.fuckwaterboard.utils.SoundUtils;
 import com.google.gson.annotations.Expose;
 import io.github.moulberry.moulconfig.annotations.*;
 import io.github.moulberry.moulconfig.observer.Property;

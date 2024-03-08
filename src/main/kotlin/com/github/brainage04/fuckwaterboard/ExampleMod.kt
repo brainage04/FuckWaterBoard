@@ -1,9 +1,9 @@
-package com.example
+package com.github.brainage04.fuckwaterboard
 
-import com.example.commands.manager.CommandManager
-import com.example.config.manager.ConfigManager
-import com.example.config.ExampleModConfig
-import com.example.keybinds.ConfigKeyBind
+import com.github.brainage04.fuckwaterboard.commands.manager.CommandManager
+import com.github.brainage04.fuckwaterboard.config.manager.ConfigManager
+import com.github.brainage04.fuckwaterboard.config.FuckWaterBoardConfig
+import com.github.brainage04.fuckwaterboard.keybinds.ConfigKeyBind
 import net.minecraft.client.settings.KeyBinding
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.client.registry.ClientRegistry
@@ -13,8 +13,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import org.apache.logging.log4j.LogManager
 
-@Mod(modid = ExampleMod.MOD_ID, useMetadata = true)
-class ExampleMod {
+@Mod(modid = FuckWaterBoard.MOD_ID, useMetadata = true)
+class FuckWaterBoard {
     private fun registerKeyBinds(vararg keybinds: KeyBinding?) {
         for (keybind in keybinds) {
             ClientRegistry.registerKeyBinding(keybind)
@@ -48,15 +48,15 @@ class ExampleMod {
 
     companion object {
         lateinit var configManager: ConfigManager
-        const val MOD_ID = "examplemod"
-        const val MOD_NAME = "ExampleMod"
+        const val MOD_ID = "fuckwaterboard"
+        const val MOD_NAME = "FuckWaterBoard"
         val LOGGER = LogManager.getLogger(MOD_ID)
 
         @JvmStatic
         val version: String
             get() = Loader.instance().indexedModList[MOD_ID]!!.version
 
-        val config: ExampleModConfig
+        val config: FuckWaterBoardConfig
             get() = configManager.config ?: error("config is null")
 
         val configKeyBind = ConfigKeyBind()

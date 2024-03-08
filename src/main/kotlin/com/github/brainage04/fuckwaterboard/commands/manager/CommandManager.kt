@@ -1,15 +1,15 @@
-package com.example.commands.manager
+package com.github.brainage04.fuckwaterboard.commands.manager
 
-import com.example.ExampleMod
-import com.example.commands.core.SimpleCommand
-import com.example.commands.core.SimpleCommand.ProcessCommandRunnable
+import com.github.brainage04.fuckwaterboard.FuckWaterBoard
+import com.github.brainage04.fuckwaterboard.commands.core.SimpleCommand
+import com.github.brainage04.fuckwaterboard.commands.core.SimpleCommand.ProcessCommandRunnable
 import net.minecraft.command.ICommandSender
 import net.minecraftforge.client.ClientCommandHandler
 
 class CommandManager {
     init {
-        registerCommand(ExampleMod.MOD_ID) {
-            ExampleMod.configManager.openConfigGui()
+        registerCommand(FuckWaterBoard.MOD_ID) {
+            FuckWaterBoard.configManager.openConfigGui()
         }
     }
 

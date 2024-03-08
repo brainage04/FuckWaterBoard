@@ -1,7 +1,7 @@
-package com.example.config.manager
+package com.github.brainage04.fuckwaterboard.config.manager
 
-import com.example.config.ExampleModConfig
-import com.example.errors.ConfigError
+import com.github.brainage04.fuckwaterboard.config.FuckWaterBoardConfig
+import com.github.brainage04.fuckwaterboard.errors.ConfigError
 import com.google.gson.GsonBuilder
 import com.google.gson.TypeAdapter
 import com.google.gson.stream.JsonReader
@@ -48,12 +48,12 @@ class ConfigManager {
             .create()
     }
 
-    private var configDirectory = File("config/examplemod")
+    private var configDirectory = File("config/fuckwaterboard")
     private var configFile: File
-    var config: ExampleModConfig? = null
+    var config: FuckWaterBoardConfig? = null
     private var lastSaveTime = 0L
 
-    private lateinit var processor: MoulConfigProcessor<ExampleModConfig>
+    private lateinit var processor: MoulConfigProcessor<FuckWaterBoardConfig>
     private val editor by lazy { MoulConfigEditor(processor) }
 
     init {
@@ -67,7 +67,7 @@ class ConfigManager {
 
         if (config == null) {
             println("Creating a clean config.")
-            config = ExampleModConfig()
+            config = FuckWaterBoardConfig()
         }
 
         val config = config!!
@@ -99,7 +99,7 @@ class ConfigManager {
                 builder.append(line)
                 builder.append("\n")
             }
-            config = gson.fromJson(builder.toString(), ExampleModConfig::class.java)
+            config = gson.fromJson(builder.toString(), FuckWaterBoardConfig::class.java)
         } catch (e: Exception) {
             throw ConfigError("Could not load config", e)
         }

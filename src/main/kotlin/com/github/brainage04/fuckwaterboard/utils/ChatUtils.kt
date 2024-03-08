@@ -1,6 +1,6 @@
-package com.example.utils
+package com.github.brainage04.fuckwaterboard.utils
 
-import com.example.ExampleMod
+import com.github.brainage04.fuckwaterboard.FuckWaterBoard
 import net.minecraft.client.Minecraft
 import net.minecraft.util.ChatComponentText
 
@@ -33,7 +33,7 @@ object ChatUtils {
 
     @JvmStatic
     fun messageToChat(message: String, soundType: SoundUtils.SoundType = SoundUtils.SoundType.NONE) {
-        Minecraft.getMinecraft().thePlayer.addChatMessage(ChatComponentText("[${ExampleMod.MOD_NAME}] $message"))
+        Minecraft.getMinecraft().thePlayer.addChatMessage(ChatComponentText("[${FuckWaterBoard.MOD_NAME}] $message"))
 
         when (soundType) {
             SoundUtils.SoundType.NONE -> {}

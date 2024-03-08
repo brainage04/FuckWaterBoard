@@ -1,6 +1,6 @@
-package com.example.utils
+package com.github.brainage04.fuckwaterboard.utils
 
-import com.example.ExampleMod
+import com.github.brainage04.fuckwaterboard.FuckWaterBoard
 import net.minecraft.client.Minecraft
 import net.minecraft.client.audio.ISound
 import net.minecraft.client.audio.PositionedSound
@@ -29,7 +29,7 @@ object SoundUtils {
                 if (e is IllegalArgumentException) {
                     e.message?.let {
                         if (it.startsWith("value already present:")) {
-                            ExampleMod.LOGGER.info("Sound error: $it")
+                            FuckWaterBoard.LOGGER.info("Sound error: $it")
                             return@addScheduledTask
                         }
                     }
