@@ -26,7 +26,7 @@ public class MainCategory {
     @Expose
     @ConfigOption(name = "Ambient Sounds", desc = "")
     @Accordion
-    public AmbientSounds ambientSounds = new AmbientSounds(new AmbientSounds.VillagerSounds(true, 20, 100)); // 200
+    public AmbientSounds ambientSounds = new AmbientSounds(new AmbientSounds.VillagerSounds(true, 60, 100));
 
     public static class AmbientSounds {
         public static class VillagerSounds {

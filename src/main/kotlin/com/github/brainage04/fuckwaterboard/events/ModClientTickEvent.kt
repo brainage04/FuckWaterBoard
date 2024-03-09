@@ -1,7 +1,6 @@
 package com.github.brainage04.fuckwaterboard.events
 
 import com.github.brainage04.fuckwaterboard.FuckWaterBoard
-import com.github.brainage04.fuckwaterboard.FuckWaterBoard.Companion.LOGGER
 import com.github.brainage04.fuckwaterboard.utils.ChatUtils
 import com.github.brainage04.fuckwaterboard.utils.ConfigUtils
 import net.minecraft.client.Minecraft
@@ -55,12 +54,12 @@ class ModClientTickEvent {
 
                     if (playerList.size < 1) continue // skip if user is the only player available
 
-                    val randomPlayer = ThreadLocalRandom.current().nextInt(0, playerList.size)
-                    val randomSound = ThreadLocalRandom.current().nextInt(0, villagerSounds.size)
+                    val randomPlayer = playerList[ThreadLocalRandom.current().nextInt(0, playerList.size)]
+                    val randomSound = villagerSounds[ThreadLocalRandom.current().nextInt(0, villagerSounds.size)]
 
-                    LOGGER.info("Villager sound playing at player ${playerList[randomPlayer].name}")
+                    // LOGGER.info("Villager sound playing at player ${randomPlayer.name}")
 
-                    minecraft.theWorld.playSoundAtEntity(playerList[randomPlayer], villagerSounds[randomSound], 1.0f, 1.0f)
+                    player.worldObj.playSound(randomPlayer.posX, randomPlayer.posY, randomPlayer.posZ, randomSound, 1.0f, 1.0f, false)
 
                     ticksSinceVillagerSounds[i] = villagerSoundDelay()
                 }
