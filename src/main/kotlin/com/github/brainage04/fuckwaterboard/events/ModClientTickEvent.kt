@@ -61,6 +61,11 @@ class ModClientTickEvent {
 
                     player.worldObj.playSound(randomPlayer.posX, randomPlayer.posY, randomPlayer.posZ, randomSound, 1.0f, 1.0f, false)
 
+                    if (ConfigUtils.mainCategory.ambientSounds.villagerSounds.minDelay >= ConfigUtils.mainCategory.ambientSounds.villagerSounds.maxDelay) { // prevents crash when user changes min delay higher than max delay
+                        ConfigUtils.mainCategory.ambientSounds.villagerSounds.minDelay = ConfigUtils.mainCategory.ambientSounds.villagerSounds.maxDelay - 1
+                        FuckWaterBoard.config.saveNow()
+                    }
+
                     ticksSinceVillagerSounds[i] = villagerSoundDelay()
                 }
             }
