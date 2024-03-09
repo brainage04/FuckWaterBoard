@@ -3,6 +3,8 @@ package com.github.brainage04.fuckwaterboard
 import com.github.brainage04.fuckwaterboard.commands.manager.CommandManager
 import com.github.brainage04.fuckwaterboard.config.manager.ConfigManager
 import com.github.brainage04.fuckwaterboard.config.FuckWaterBoardConfig
+import com.github.brainage04.fuckwaterboard.events.ModClientChatEvent
+import com.github.brainage04.fuckwaterboard.events.ModClientTickEvent
 import com.github.brainage04.fuckwaterboard.keybinds.ConfigKeyBind
 import net.minecraft.client.settings.KeyBinding
 import net.minecraftforge.common.MinecraftForge
@@ -32,7 +34,7 @@ class FuckWaterBoard {
         CommandManager()
 
         registerKeyBinds(
-            configKeyBind
+            configKeyBind,
         )
     }
 
@@ -42,7 +44,10 @@ class FuckWaterBoard {
         MinecraftForge.EVENT_BUS.register(configManager)
 
         registerEvents(
-            configKeyBind
+            configKeyBind,
+
+            ModClientChatEvent(),
+            ModClientTickEvent(),
         )
     }
 

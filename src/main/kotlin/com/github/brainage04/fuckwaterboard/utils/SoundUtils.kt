@@ -16,6 +16,7 @@ object SoundUtils {
 
     private val alertSound by lazy { createSound("random.successful_hit", 1f, 1f) }
     private val notificationSound by lazy { createSound("gui.button.press", 1f, 1f) }
+    private val fuckWaterBoardSound by lazy { createSound("${FuckWaterBoard.MOD_ID}:fuckwaterboard", 1f, 1f) }
 
     private fun ISound.playSound() {
         Minecraft.getMinecraft().addScheduledTask {
@@ -56,11 +57,15 @@ object SoundUtils {
         return sound
     }
 
+    fun playAlertSound() {
+        alertSound.playSound()
+    }
+
     fun playNotificationSound() {
         notificationSound.playSound()
     }
 
-    fun playAlertSound() {
-        alertSound.playSound()
+    fun playFuckWaterBoardSound() {
+        fuckWaterBoardSound.playSound()
     }
 }

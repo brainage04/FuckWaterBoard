@@ -32,6 +32,11 @@ object ChatUtils {
     const val resetChar = "§r"
 
     @JvmStatic
+    fun messageToChat(message: String) {
+        messageToChat(message, SoundUtils.SoundType.NONE)
+    }
+
+    @JvmStatic
     fun messageToChat(message: String, soundType: SoundUtils.SoundType = SoundUtils.SoundType.NONE) {
         Minecraft.getMinecraft().thePlayer.addChatMessage(ChatComponentText("[${FuckWaterBoard.MOD_NAME}] $message"))
 

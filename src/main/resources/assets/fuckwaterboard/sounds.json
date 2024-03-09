@@ -1,0 +1,11 @@
+{
+  "fuckwaterboard": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "fuck_water_board",
+        "stream": false
+      }
+    ]
+  }
+}
