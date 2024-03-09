@@ -1,5 +1,6 @@
 package com.github.brainage04.fuckwaterboard.mixin;
 
+import com.github.brainage04.fuckwaterboard.FuckWaterBoard;
 import com.github.brainage04.fuckwaterboard.events.ModClientChatEvent;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.client.entity.AbstractClientPlayer;
@@ -20,6 +21,6 @@ public class MixinEntityPlayerSP extends AbstractClientPlayer {
     public void onChatSendMessage(String message, CallbackInfo ci) {
         new ModClientChatEvent().setLastMessage(message);
 
-        // ChatUtils.messageToChat(message);
+        FuckWaterBoard.Companion.getLOGGER().info(message);
     }
 }

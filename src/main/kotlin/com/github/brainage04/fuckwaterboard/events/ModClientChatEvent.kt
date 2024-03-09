@@ -40,10 +40,10 @@ class ModClientChatEvent {
         if (ModClientTickEvent.ticksSinceWaterboard >= 0) {
             val unformattedText = event.message.unformattedText
 
-            if (unformattedText.contains(player.name) && unformattedText.contains(lastMessage)) return
+            if (unformattedText.contains(player.name) && unformattedText.endsWith(lastMessage)) return
 
             for (match in matches) {
-                if (event.message.unformattedText.contains(match.uppercase(Locale.getDefault()))) {
+                if (unformattedText.uppercase(Locale.getDefault()).contains(match)) {
                     SoundUtils.playFuckWaterBoardSound()
 
                     val prefixIndex = Random.nextInt(0, prefixes.size)
