@@ -15,7 +15,7 @@ class ModClientTickEvent {
         var ticksSinceWaterboard = 0
     }
 
-    fun villagerSoundDelay(): Int {
+    private fun villagerSoundDelay(): Int {
         return ThreadLocalRandom.current().nextInt(-ConfigUtils.mainCategory.ambientSounds.villagerSounds.maxDelay, -ConfigUtils.mainCategory.ambientSounds.villagerSounds.minDelay + 1)
     }
 
@@ -48,7 +48,7 @@ class ModClientTickEvent {
             for (i in ticksSinceVillagerSounds.indices) {
                 ticksSinceVillagerSounds[i] += 1 // increment all 8 timers every tick
 
-                if (ticksSinceVillagerSounds[i] >= 0) { // detect a random player within 16 (-1) blocks and make a villager sound emit from them
+                if (ticksSinceVillagerSounds[i] >= 0) { // detect a random player within 15 blocks and make a villager sound emit from them
                     val playerList = player.worldObj.getEntitiesWithinAABB(EntityPlayer::class.java, player.entityBoundingBox.expand(15.0, 15.0, 15.0))
                     playerList.remove(player)
 
