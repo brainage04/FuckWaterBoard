@@ -37,7 +37,9 @@ class ModClientChatEvent {
 
         if (event.type == overlayValue) return
 
-        if (ModClientTickEvent.ticksSinceWaterboard >= 0) {
+        if (ConfigUtils.mainCategory.soundTriggers.fuckWaterBoard.enabled) {
+            if (ModClientTickEvent.ticksSinceWaterboard < 0) return
+
             val unformattedText = event.message.unformattedText
 
             if (unformattedText.contains(player.name) && unformattedText.endsWith(lastMessage)) return
