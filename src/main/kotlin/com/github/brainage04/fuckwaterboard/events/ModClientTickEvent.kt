@@ -16,7 +16,7 @@ class ModClientTickEvent {
     }
 
     private fun villagerSoundDelay(): Int {
-        return ThreadLocalRandom.current().nextInt(-ConfigUtils.mainCategory.ambientSounds.villagerSounds.maxDelay, -ConfigUtils.mainCategory.ambientSounds.villagerSounds.minDelay + 1)
+        return ThreadLocalRandom.current().nextInt(-ConfigUtils.mainCategory.ambientSounds.ambientSound.maxDelay, -ConfigUtils.mainCategory.ambientSounds.ambientSound.minDelay + 1)
     }
 
     private var ticksSinceVillagerSounds = arrayListOf(
@@ -44,7 +44,7 @@ class ModClientTickEvent {
         val minecraft = Minecraft.getMinecraft() ?: return
         val player = minecraft.thePlayer ?: return
 
-        if (ConfigUtils.mainCategory.ambientSounds.villagerSounds.enabled) {
+        if (ConfigUtils.mainCategory.ambientSounds.ambientSound.enabled) {
             for (i in ticksSinceVillagerSounds.indices) {
                 ticksSinceVillagerSounds[i] += 1 // increment all 8 timers every tick
 
@@ -52,17 +52,29 @@ class ModClientTickEvent {
                     val playerList = player.worldObj.getEntitiesWithinAABB(EntityPlayer::class.java, player.entityBoundingBox.expand(15.0, 15.0, 15.0))
                     playerList.remove(player)
 
+                    // unfair advantage checks
+                    for (listedPlayer in playerList) {
+                        if (listedPlayer.isSneaking) playerList.remove(listedPlayer)
+                        else {
+                            for (potionEffect in listedPlayer.activePotionEffects) {
+                                if (potionEffect.potionID == 14) playerList.remove(listedPlayer)
+                                break
+                            }
+                        }
+                    }
+
                     if (playerList.size < 1) continue // skip if user is the only player available
 
                     val randomPlayer = playerList[ThreadLocalRandom.current().nextInt(0, playerList.size)]
+
                     val randomSound = villagerSounds[ThreadLocalRandom.current().nextInt(0, villagerSounds.size)]
 
                     // LOGGER.info("Villager sound playing at player ${randomPlayer.name}")
 
                     player.worldObj.playSound(randomPlayer.posX, randomPlayer.posY, randomPlayer.posZ, randomSound, 1.0f, 1.0f, false)
 
-                    if (ConfigUtils.mainCategory.ambientSounds.villagerSounds.minDelay >= ConfigUtils.mainCategory.ambientSounds.villagerSounds.maxDelay) { // prevents crash when user changes min delay higher than max delay
-                        ConfigUtils.mainCategory.ambientSounds.villagerSounds.minDelay = ConfigUtils.mainCategory.ambientSounds.villagerSounds.maxDelay - 1
+                    if (ConfigUtils.mainCategory.ambientSounds.ambientSound.minDelay >= ConfigUtils.mainCategory.ambientSounds.ambientSound.maxDelay) { // prevents crash when user changes min delay higher than max delay
+                        ConfigUtils.mainCategory.ambientSounds.ambientSound.minDelay = ConfigUtils.mainCategory.ambientSounds.ambientSound.maxDelay - 1
                         FuckWaterBoard.config.saveNow()
                     }
 
