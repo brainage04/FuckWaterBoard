@@ -110,7 +110,7 @@ public class MainCategory {
     @Expose
     @ConfigOption(name = "Random Ranges", desc = "")
     @Accordion
-    public RandomRanges randomRanges = new RandomRanges(3, 15);
+    public RandomRanges randomRanges = new RandomRanges(5, 10);
 
     @Expose
     @ConfigOption(name = "DANGER ZONE", desc = "")
